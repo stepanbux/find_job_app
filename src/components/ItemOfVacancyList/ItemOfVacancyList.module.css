@@ -1,0 +1,23 @@
+.wrapper {
+  width: 773px;
+  min-height: 137px;
+  height: auto;
+  background: #ffffff;
+  border: 1px solid #eaebed;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  margin: 24px 24px 0px 0px;
+  outline: none;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

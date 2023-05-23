@@ -1,0 +1,70 @@
+.industry {
+  margin-top: 32px;
+  width: 275px;
+  height: 69px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 275px;
+  height: 42px;
+  background: #ffffff;
+  border: 1px solid #d5d6dc;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+
+  padding: 10px 135px 11px 12px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ACADB9;
+}
+
+.select::placeholder {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ACADB9;
+}
+
+.select::-ms-expand {
+  display: none;
+}
+
+.select_wrapper {
+  position: relative;
+}
+
+.select_wrapper::before {
+  content: "";
+
+  position: absolute;
+  top: 30%;
+  right: 12px;
+  transform: translateY(-50%);
+  display: block;
+  width: 10px;
+  height: 10px;
+
+
+
+  border: 1.5px solid #acadb9;
+  border-width: 0 1.5px 1.5px 0;
+  display: inline-block;
+  border-radius: 1.2px;
+
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+
+  pointer-events: none;
+}

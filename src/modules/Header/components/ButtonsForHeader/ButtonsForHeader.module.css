@@ -1,0 +1,27 @@
+.buttons {
+  width: 275px;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.default {
+  text-decoration: none;
+  width: auto;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #232134;
+  border: none;
+  background-color: rgba(240, 248, 255, 0);
+  cursor: pointer;
+  outline: none;
+}
+
+.activeLink {
+  text-decoration: none;
+  color: #5e96fc;
+}

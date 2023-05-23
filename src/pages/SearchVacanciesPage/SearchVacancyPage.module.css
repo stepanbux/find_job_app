@@ -1,0 +1,19 @@
+.wrapper {
+  margin-top: 40px;
+  width: 1116px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.vacanciesFromSearch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.pagination {
+  margin: 24px 0 44px 0;
+}
