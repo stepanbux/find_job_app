@@ -8,7 +8,7 @@ export const Header = () => {
   const navigate = useNavigate();
 
   const toHome = () => {
-    return navigate("/find_job_app");
+    return navigate("/");
   };
 
   return (

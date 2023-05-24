@@ -41,7 +41,7 @@ function App() {
         )}
         {!isLoading && (
           <Routes>
-            <Route path="/find_job_app" element={<SearchVacanciesPage />} />
+            <Route path="/" element={<SearchVacanciesPage />} />
             <Route path="/favorites" element={<FavoritesVacanciesPage />} />
             <Route path="/vacancy/:idOfVacancy" element={<VacancyPage />} />
             <Route path="/empty_page" element={<EmptyPage />} />
