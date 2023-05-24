@@ -8,7 +8,7 @@ const setActive = ({ isActive }: { isActive: boolean }): string =>
 export const ButtonsForHeader = () => {
   return (
     <div className={s.buttons}>
-      <NavLink className={setActive} to="/">
+      <NavLink className={setActive} to="/find_job_app">
         Поиск вакансий
       </NavLink>
       <NavLink className={setActive} to="/favorites">

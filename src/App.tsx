@@ -44,7 +44,7 @@ function App() {
       <Header />
       <div className={s.content}>
         <Routes>
-          <Route path="/" element={<SearchVacanciesPage />} />
+          <Route path="/find_job_app" element={<SearchVacanciesPage />} />
           <Route path="/favorites" element={<FavoritesVacanciesPage />} />
           <Route path="/vacancy/:idOfVacancy" element={<VacancyPage />} />
           <Route path="/empty_page" element={<EmptyPage />} />
