@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import s from "./ParagraphOfDescription.module.css";
+import s from "./Description.module.css";
 
 interface Props {
   text: string;

@@ -31,6 +31,7 @@ export const SearchVacancyWithName = () => {
   return (
     <form onSubmit={onSubmit} className={s.search}>
       <input
+        data-elem="search-input"
         name="keyword"
         onChange={onChange}
         value={searchText}

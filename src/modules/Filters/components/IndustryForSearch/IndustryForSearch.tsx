@@ -28,6 +28,7 @@ export const IndustryForSearch = () => {
       <Title size={16} title={"Отрасль"} />
       <div className={s.select_wrapper}>
         <select
+          data-elem="industry-select"
           className={s.select}
           name="selectedIndustry"
           value={selected}

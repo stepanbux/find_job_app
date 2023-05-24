@@ -1,10 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import _ from "lodash";
-import {
-  Catalogues,
-  NewCatalogues,
-  NewVacancy,
-} from "../types/types";
+import { Catalogues, NewCatalogues, NewVacancy } from "../types/types";
 
 const mainSlice = createSlice({
   name: "mainSlice",
@@ -15,12 +11,6 @@ const mainSlice = createSlice({
     paymentFrom: 0,
     paymentTo: 0,
     keyword: "",
-    dataForFilter: {
-      selectedIndustry: 0,
-      paymentFrom: 0,
-      paymentTo: 0,
-      keyword: "",
-    },
     page: 1,
     favoriteVacancies: [] as NewVacancy[],
   },

@@ -7,8 +7,16 @@ export const SalaryForSearch = () => {
   return (
     <div className={s.salary}>
       <Title size={16} title={"Оклад"} />
-      <InputForSalary name={"paymentFrom"} placeholder="От" />
-      <InputForSalary name={"paymentTo"} placeholder="До" />
+      <InputForSalary
+        dataElem={"salary-from-input"}
+        name={"paymentFrom"}
+        placeholder="От"
+      />
+      <InputForSalary
+        dataElem={"salary-to-input"}
+        name={"paymentTo"}
+        placeholder="До"
+      />
     </div>
   );
 };

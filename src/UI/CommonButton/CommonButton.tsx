@@ -10,6 +10,7 @@ interface Props {
 export const CommonButton: FC<Props> = ({ width, height, text }) => {
   return (
     <button
+      data-elem="search-button"
       type="submit"
       style={{ width: width, height: height, background: "#5e96fc" }}
       className={s.button}

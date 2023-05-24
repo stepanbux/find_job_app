@@ -4,7 +4,7 @@ import { SearchVacanciesPage } from "./pages/SearchVacanciesPage/SearchVacancyPa
 import { VacancyPage } from "./pages/VacancyPage/VacancyPage";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./modules/Header/Header";
-import { FavoritesVacanciesPage } from "./pages/FavoritesVacanciesPage/FavoritesVacanciesPage";
+import { FavoritesVacanciesPage } from "./pages/FavoriteVacanciesPage/FavoriteVacanciesPage";
 import { EmptyPage } from "./pages/EmptyPage/EmptyPage";
 import { useAuthUserQuery } from "./api/mainApi";
 import { useAppDispatch } from "./store/redux-hooks";

@@ -60,7 +60,7 @@ export const ItemOfVacancyList: FC<Props> = ({ data }) => {
   }, [data, dispatch, favoriteVacancies]);
 
   return (
-    <div className={s.wrapper}>
+    <div data-elem={`vacancy-${data.id}`} className={s.wrapper}>
       <ShortVacancyInformation
         title={data.profession}
         payment_from={data.payment_from}
@@ -70,7 +70,11 @@ export const ItemOfVacancyList: FC<Props> = ({ data }) => {
         idOfVacancy={data.id}
         currency={data.currency}
       />
-      <button onClick={onClick} className={s.button}>
+      <button
+        data-elem={`vacancy-${data.id}-shortlist-button`}
+        onClick={onClick}
+        className={s.button}
+      >
         <img src={isStar ? fullStar : emptyStar} />
       </button>
     </div>

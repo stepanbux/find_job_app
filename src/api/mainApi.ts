@@ -3,7 +3,6 @@ import { Filters } from "../types/types";
 
 export const mainApi = createApi({
   reducerPath: "mainApi",
-  // refetchOnFocus: true,
   refetchOnReconnect: true,
   baseQuery: fetchBaseQuery({
     baseUrl: "https://startup-summer-proxy-production.up.railway.app/2.0/",
@@ -38,7 +37,6 @@ export const mainApi = createApi({
 export const {
   useAuthUserQuery,
   useGetCatalogQuery,
-  useLazyGetVacanciesWithFiltersQuery,
   useGetVacanciesWithFiltersQuery,
   useGetVacancyWithIdQuery,
 } = mainApi;

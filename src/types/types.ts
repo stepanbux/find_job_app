@@ -64,10 +64,3 @@ export interface NewVacancy {
   currency: string;
   id: number;
 }
-
-export interface DataForFilter {
-  selectedIndustry: number;
-  paymentFrom: number;
-  paymentTo: number;
-  keyword: string;
-}
