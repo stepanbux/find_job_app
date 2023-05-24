@@ -8,26 +8,10 @@ import { NewVacancy } from "../../types/types";
 import { setFavoriteVacancies } from "../../store/slice";
 
 interface Props {
-  id: number;
-  title: string;
-  salary: string;
-  condition: string;
-  location: string;
   data: NewVacancy;
 }
 
-export const HeaderOfVacancy: FC<Props> = ({
-  id,
-  title,
-  salary,
-  condition,
-  location,
-  data
-}) => {
-  // const onClick = useCallback(() => {
-  //   setIsStar((prev) => !prev);
-  // }, []);
-
+export const HeaderOfVacancy: FC<Props> = ({ data }) => {
   const dispatch = useAppDispatch();
   const [isStar, setIsStar] = useState(false);
 
@@ -36,12 +20,16 @@ export const HeaderOfVacancy: FC<Props> = ({
   );
 
   useEffect(() => {
-    const isFavoriteVacancy = favoriteVacancies.some((item) => item.id === data.id);
+    const isFavoriteVacancy = favoriteVacancies.some(
+      (item) => item.id === data.id
+    );
     setIsStar(isFavoriteVacancy);
   }, [favoriteVacancies, data.id]);
 
   const onClick = useCallback(() => {
-    const isFavoriteVacancy = favoriteVacancies.some((item) => item.id === data.id);
+    const isFavoriteVacancy = favoriteVacancies.some(
+      (item) => item.id === data.id
+    );
     setIsStar((prev) => !prev);
     const favoriteVacanciesFromLocalStore: NewVacancy[] = JSON.parse(
       localStorage.getItem("favoriteVacancies") || "[]"
@@ -74,15 +62,21 @@ export const HeaderOfVacancy: FC<Props> = ({
   return (
     <div className={s.wrapper}>
       <div className={s.vacancy}>
-        <span className={s.vacancy_title}>{title}</span>
+        <span className={s.vacancy_title}>{data.profession}</span>
         <div className={s.vacancy_information}>
-          <span className={s.information_salary}>з/п от {salary}</span>
+          <span className={s.information_salary}>
+            {data.payment_from > 0
+              ? `з/п от ${data.payment_from} ${data.currency}`
+              : data.payment_to > 0
+              ? `з/п от ${data.payment_to} ${data.currency}`
+              : "з/п по договоренности"}
+          </span>
           <span className={s.information_dot}>•</span>
-          <span className={s.information_condition}>{condition}</span>
+          <span className={s.information_condition}>{data.type_of_work}</span>
         </div>
         <div className={s.vacancy_location}>
           <img src={locationLogo} />
-          <span className={s.location_city}>{location}</span>
+          <span className={s.location_city}>{data.town}</span>
         </div>
       </div>
       <button onClick={onClick} className={s.button}>

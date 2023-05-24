@@ -11,6 +11,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useAppDispatch, useAppSelector } from "../../store/redux-hooks";
 import { setPage } from "../../store/slice";
 import { Vacancy } from "../../types/types";
+import { Preloader } from "../../modules/Preloader/Preloader";
 
 const theme = createTheme({
   palette: {
@@ -46,9 +47,9 @@ export const SearchVacanciesPage = () => {
   if (error) return <div>Something went wrong...</div>;
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Preloader />;
   }
-  
+
   const array = data.objects.map((item: Vacancy) => {
     return {
       profession: item.profession,

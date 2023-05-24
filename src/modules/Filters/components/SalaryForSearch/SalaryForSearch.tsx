@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import s from "./SalaryForSearch.module.css";
 import { Title } from "../../../../UI/Titles/TitleForVacancySearch/TitleForVacancySearch";
 import { InputForSalary } from "../InputForSalary/InputForSalary";

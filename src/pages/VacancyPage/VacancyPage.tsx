@@ -4,6 +4,7 @@ import { HeaderOfVacancy } from "../../modules/HeaderOfVacancy/HeaderOfVacancy";
 import { useParams } from "react-router-dom";
 import { useGetVacancyWithIdQuery } from "../../api/mainApi";
 import { ParagraphOfDescription } from "./components/ParagraphOfDescription/ParagraphOfDescription";
+import { Preloader } from "../../modules/Preloader/Preloader";
 
 export const VacancyPage = () => {
   const { idOfVacancy } = useParams();
@@ -11,15 +12,10 @@ export const VacancyPage = () => {
     idOfVacancy: Number(idOfVacancy),
   });
 
-  if (isLoading) return <div>loading</div>;
+  if (isLoading) return <Preloader />;
   return (
     <div className={s.wrapper}>
       <HeaderOfVacancy
-        id={Number(idOfVacancy)}
-        title={data.profession}
-        salary={data.payment_from}
-        condition={data.type_of_work.title}
-        location={data.town.title}
         data={{
           profession: data.profession,
           firm_name: data.firm_name,

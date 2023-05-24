@@ -1,11 +1,12 @@
-import React, { FC, useCallback } from "react";
+import React, { FC } from "react";
 import s from "./ShortVacancyInformation.module.css";
 import locationLogo from "../../assets/location.svg";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   title: string;
-  salary: number;
+  payment_from: number;
+  payment_to: number;
   condition: string;
   location: string;
   idOfVacancy: number;
@@ -14,7 +15,8 @@ interface Props {
 
 export const ShortVacancyInformation: FC<Props> = ({
   title,
-  salary,
+  payment_from,
+  payment_to,
   condition,
   location,
   idOfVacancy,
@@ -33,7 +35,11 @@ export const ShortVacancyInformation: FC<Props> = ({
       </span>
       <div className={s.information}>
         <span className={s.salary}>
-          от {salary} {currency}
+          {payment_from > 0
+            ? `з/п от ${payment_from} ${currency}`
+            : payment_to > 0
+            ? `з/п от ${payment_to} ${currency}`
+            : "з/п по договоренности"}
         </span>
         <span className={s.dot}>•</span>
         <span className={s.condition}>{condition}</span>

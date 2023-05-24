@@ -10,6 +10,7 @@ import { useAuthUserQuery } from "./api/mainApi";
 import { useAppDispatch } from "./store/redux-hooks";
 import { setFavoriteVacancies } from "./store/slice";
 import { NewVacancy } from "./types/types";
+import { Preloader } from "./modules/Preloader/Preloader";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -33,7 +34,11 @@ function App() {
       <Header />
       <div className={s.content}>
         {error && <EmptyPage />}
-        {isLoading && <div>Loading...</div>}
+        {isLoading && (
+          <div>
+            <Preloader />
+          </div>
+        )}
         {!isLoading && (
           <Routes>
             <Route path="/find_job_app" element={<SearchVacanciesPage />} />

@@ -63,7 +63,8 @@ export const ItemOfVacancyList: FC<Props> = ({ data }) => {
     <div className={s.wrapper}>
       <ShortVacancyInformation
         title={data.profession}
-        salary={data.payment_from}
+        payment_from={data.payment_from}
+        payment_to={data.payment_to}
         condition={data.type_of_work}
         location={data.town}
         idOfVacancy={data.id}
