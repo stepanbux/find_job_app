@@ -1,10 +1,10 @@
-import React, { FC, useCallback, useState } from "react";
+import React, { FC, useCallback, useEffect, useState } from "react";
 import s from "./ItemOfVacancyList.module.css";
 import { ShortVacancyInformation } from "../ShortVacancyInformation/ShortVacancyInformation";
 import emptyStar from "../../assets/star.svg";
 import fullStar from "../../assets/fullStar.svg";
-import { NewVacancy, Vacancy } from "../../types/types";
-import { useAppDispatch } from "../../store/redux-hooks";
+import { NewVacancy } from "../../types/types";
+import { useAppDispatch, useAppSelector } from "../../store/redux-hooks";
 import { setFavoriteVacancies } from "../../store/slice";
 
 interface Props {
@@ -12,24 +12,52 @@ interface Props {
 }
 
 export const ItemOfVacancyList: FC<Props> = ({ data }) => {
-  const [isStar, setIsStar] = useState(false);
   const dispatch = useAppDispatch();
+  const [isStar, setIsStar] = useState(false);
+
+  const favoriteVacancies = useAppSelector(
+    (state) => state.mainReducer.favoriteVacancies
+  );
+
+  useEffect(() => {
+    const isFavoriteVacancy = favoriteVacancies.some(
+      (item) => item.id === data.id
+    );
+    setIsStar(isFavoriteVacancy);
+  }, [data.id, favoriteVacancies]);
 
   const onClick = useCallback(() => {
+    const isFavoriteVacancy = favoriteVacancies.some(
+      (item) => item.id === data.id
+    );
     setIsStar((prev) => !prev);
-    const favoriteVacancies = JSON.parse(
+    const favoriteVacanciesFromLocalStore: NewVacancy[] = JSON.parse(
       localStorage.getItem("favoriteVacancies") || "[]"
     );
-    favoriteVacancies.push(data);
-    localStorage.setItem(
-      "favoriteVacancies",
-      JSON.stringify(favoriteVacancies)
-    );
-    const newFavoriteVacancies: Vacancy[] = JSON.parse(
+
+    if (isFavoriteVacancy) {
+      const editFavoriteVacancy = favoriteVacanciesFromLocalStore.filter(
+        (item) => item.id !== data.id
+      );
+      localStorage.setItem(
+        "favoriteVacancies",
+        JSON.stringify(editFavoriteVacancy)
+      );
+    }
+
+    if (!isFavoriteVacancy) {
+      favoriteVacanciesFromLocalStore.push(data);
+      localStorage.setItem(
+        "favoriteVacancies",
+        JSON.stringify(favoriteVacanciesFromLocalStore)
+      );
+    }
+
+    const newFavoriteVacancies = JSON.parse(
       localStorage.getItem("favoriteVacancies") || "[]"
     );
     dispatch(setFavoriteVacancies(newFavoriteVacancies));
-  }, [data, dispatch]);
+  }, [data, dispatch, favoriteVacancies]);
 
   return (
     <div className={s.wrapper}>

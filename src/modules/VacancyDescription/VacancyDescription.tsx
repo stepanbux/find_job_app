@@ -9,7 +9,7 @@ interface Props {
 export const VacancyDescription: FC<Props> = ({ text }) => {
   return (
     <div className={s.wrapper}>
-      <ParagraphOfDescription title="Обязанности:" text={text} />
+      <ParagraphOfDescription text={text} />
     </div>
   );
 };

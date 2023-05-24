@@ -1,9 +1,8 @@
 .salary {
-    margin-top: 20px;
-    margin-bottom: 71px;
-    width: 275px;
-    height: 69px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+  position: relative;
+  width: 275px;
+  height: 119px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

@@ -1,11 +1,9 @@
-import React, { ChangeEvent, FC, memo, useMemo, useState } from "react";
+import React, { ChangeEvent, useMemo, useState } from "react";
 import s from "./IndustryForSearch.module.css";
 import { Title } from "../../../../UI/Titles/TitleForVacancySearch/TitleForVacancySearch";
-import { useAppDispatch, useAppSelector } from "../../../../store/redux-hooks";
-import { setSelectedIndustry } from "../../../../store/slice";
+import { useAppSelector } from "../../../../store/redux-hooks";
 
 export const IndustryForSearch = () => {
-  const dispatch = useAppDispatch();
   const catalogues = useAppSelector((state) => state.mainReducer.catalogues);
   const selectedIndustry = useAppSelector(
     (state) => state.mainReducer.selectedIndustry
@@ -16,7 +14,6 @@ export const IndustryForSearch = () => {
     setSelected(Number(e.target.value));
   };
 
-  // console.log(catalogues);
   const newArray = useMemo(() => {
     return catalogues.map((item, index) => {
       return (

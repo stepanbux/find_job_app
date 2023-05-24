@@ -10,12 +10,13 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useAppDispatch, useAppSelector } from "../../store/redux-hooks";
 import { setPage } from "../../store/slice";
+import { Vacancy } from "../../types/types";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#efdee",
-      contrastText: "#fff",
+      main: "#5E96FC",
+      contrastText: "#5E96FC",
     },
   },
 });
@@ -39,7 +40,7 @@ export const SearchVacanciesPage = () => {
   });
 
   const onChange = (event: ChangeEvent<unknown>, page: number) => {
-    dispatch(setPage(page - 1));
+    dispatch(setPage(page));
   };
 
   if (error) return <div>Something went wrong...</div>;
@@ -47,15 +48,30 @@ export const SearchVacanciesPage = () => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
+  
+  const array = data.objects.map((item: Vacancy) => {
+    return {
+      profession: item.profession,
+      firm_name: item.firm_name,
+      town: item.town.title,
+      type_of_work: item.type_of_work.title,
+      payment_from: item.payment_from,
+      payment_to: item.payment_to,
+      currency: item.currency,
+      id: item.id,
+    };
+  });
+
   return (
     <div className={s.wrapper}>
       <Filters />
       <div className={s.vacanciesFromSearch}>
         <SearchVacancyWithName />
-        <VacancyList data={data.objects} />
+        <VacancyList data={array} />
         <div className={s.pagination}>
           <ThemeProvider theme={theme}>
             <Pagination
+              page={page}
               onChange={onChange}
               count={20}
               color="primary"

@@ -6,10 +6,10 @@ import { Routes, Route } from "react-router-dom";
 import { Header } from "./modules/Header/Header";
 import { FavoritesVacanciesPage } from "./pages/FavoritesVacanciesPage/FavoritesVacanciesPage";
 import { EmptyPage } from "./pages/EmptyPage/EmptyPage";
-import { useAuthUserQuery, useGetCatalogQuery } from "./api/mainApi";
+import { useAuthUserQuery } from "./api/mainApi";
 import { useAppDispatch } from "./store/redux-hooks";
 import { setFavoriteVacancies } from "./store/slice";
-import { Vacancy } from "./types/types";
+import { NewVacancy } from "./types/types";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -21,34 +21,27 @@ function App() {
       localStorage.setItem("favoriteVacancies", JSON.stringify([]));
     }
     if (localStorage.getItem("favoriteVacancies")) {
-      const favoriteVacancies: Vacancy[] = JSON.parse(
+      const favoriteVacancies: NewVacancy[] = JSON.parse(
         localStorage.getItem("favoriteVacancies") || "[]"
       );
       dispatch(setFavoriteVacancies(favoriteVacancies));
     }
   }, [dispatch]);
 
-  if (isLoading) {
-    return (
-      <div className={s.wrapper}>
-        <Header />
-        <div className={s.content}>
-          <div>Loading...</div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className={s.wrapper}>
       <Header />
       <div className={s.content}>
-        <Routes>
-          <Route path="/find_job_app" element={<SearchVacanciesPage />} />
-          <Route path="/favorites" element={<FavoritesVacanciesPage />} />
-          <Route path="/vacancy/:idOfVacancy" element={<VacancyPage />} />
-          <Route path="/empty_page" element={<EmptyPage />} />
-        </Routes>
+        {error && <EmptyPage />}
+        {isLoading && <div>Loading...</div>}
+        {!isLoading && (
+          <Routes>
+            <Route path="/find_job_app" element={<SearchVacanciesPage />} />
+            <Route path="/favorites" element={<FavoritesVacanciesPage />} />
+            <Route path="/vacancy/:idOfVacancy" element={<VacancyPage />} />
+            <Route path="/empty_page" element={<EmptyPage />} />
+          </Routes>
+        )}
       </div>
     </div>
   );

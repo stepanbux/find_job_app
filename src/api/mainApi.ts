@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Filters, Vacancies } from "../types/types";
+import { Filters } from "../types/types";
 
 export const mainApi = createApi({
   reducerPath: "mainApi",
@@ -23,7 +23,11 @@ export const mainApi = createApi({
     }),
     getVacanciesWithFilters: build.query({
       query: (data: Filters) =>
-        `vacancies/?&published=1&count=4&page=${data.page}&keyword=${data.keyword}&payment_from=${data.paymentFrom}&payment_to=${data.paymentTo}&catalogues=${data.selectedIndustry}`,
+        `vacancies/?&published=1&count=4&page=${data.page - 1}&keyword=${
+          data.keyword
+        }&payment_from=${data.paymentFrom}&payment_to=${
+          data.paymentTo
+        }&catalogues=${data.selectedIndustry}`,
     }),
     getVacancyWithId: build.query({
       query: (data) => `vacancies/${data.idOfVacancy}`,

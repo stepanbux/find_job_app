@@ -28,6 +28,7 @@ export const Filters = () => {
     const formData = new FormData(event.currentTarget);
     const formProps = Object.fromEntries(formData);
     console.log(formProps);
+
     dispatch(setPaymentFrom(Number(formProps.paymentFrom)));
     dispatch(setPaymentTo(Number(formProps.paymentTo)));
     dispatch(setSelectedIndustry(Number(formProps.selectedIndustry)));
@@ -36,9 +37,11 @@ export const Filters = () => {
   return (
     <form onSubmit={onSubmit} className={s.wrapper}>
       <MainTitleForSearch />
-      <IndustryForSearch />
-      <SalaryForSearch />
-      <CommonButton width={275} height={40} text="Применить" />
+      <div className={s.inputData}>
+        <IndustryForSearch />
+        <SalaryForSearch />
+        <CommonButton width={275} height={40} text="Применить" />
+      </div>
     </form>
   );
 };

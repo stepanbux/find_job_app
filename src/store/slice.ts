@@ -2,9 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import _ from "lodash";
 import {
   Catalogues,
-  DataForFilter,
   NewCatalogues,
-  Vacancy,
+  NewVacancy,
 } from "../types/types";
 
 const mainSlice = createSlice({
@@ -22,8 +21,8 @@ const mainSlice = createSlice({
       paymentTo: 0,
       keyword: "",
     },
-    page: 0,
-    favoriteVacancies: [] as Vacancy[],
+    page: 1,
+    favoriteVacancies: [] as NewVacancy[],
   },
   reducers: {
     setCatalogues(state, action: PayloadAction<Catalogues[]>) {
@@ -51,7 +50,7 @@ const mainSlice = createSlice({
     setPage(state, action: PayloadAction<number>) {
       state.page = action.payload;
     },
-    setFavoriteVacancies(state, action: PayloadAction<Vacancy[]>) {
+    setFavoriteVacancies(state, action: PayloadAction<NewVacancy[]>) {
       state.favoriteVacancies = action.payload;
     },
   },

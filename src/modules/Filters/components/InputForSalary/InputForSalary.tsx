@@ -1,7 +1,5 @@
-import React, { ChangeEvent, FC, useCallback, useState } from "react";
+import React, { FC, useState } from "react";
 import s from "./InputForSalary.module.css";
-import { useAppDispatch, useAppSelector } from "../../../../store/redux-hooks";
-import { setPaymentFrom, setPaymentTo } from "../../../../store/slice";
 
 interface Props {
   placeholder: string;
@@ -10,10 +8,10 @@ interface Props {
 
 export const InputForSalary: FC<Props> = ({ placeholder, name }) => {
   return (
-    <div className={s.select_wrapper}>
+    <div className={s.wrapper}>
       <input
         name={name}
-        className={s.select}
+        className={s.input}
         placeholder={placeholder}
         type="number"
       />
