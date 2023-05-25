@@ -5,7 +5,7 @@ interface Props {
   text: string;
 }
 
-export const ParagraphOfDescription: FC<Props> = ({ text }) => {
+export const Description: FC<Props> = ({ text }) => {
   return (
     <section
       className={s.description}
