@@ -12,7 +12,9 @@ const mainSlice = createSlice({
     paymentTo: 0,
     keyword: "",
     page: 1,
+    pageForFavoriteVacancies: 1,
     favoriteVacancies: [] as NewVacancy[],
+    arrayForEachPageOfFavoriteVacancies: [] as NewVacancy[],
   },
   reducers: {
     setCatalogues(state, action: PayloadAction<Catalogues[]>) {
@@ -40,8 +42,21 @@ const mainSlice = createSlice({
     setPage(state, action: PayloadAction<number>) {
       state.page = action.payload;
     },
+    setPageForFavoriteVacancies(state, action: PayloadAction<number>) {
+      state.pageForFavoriteVacancies = action.payload;
+    },
     setFavoriteVacancies(state, action: PayloadAction<NewVacancy[]>) {
       state.favoriteVacancies = action.payload;
+    },
+    setArrayForEachPageOfFavoriteVacancies(
+      state,
+      action: PayloadAction<number>
+    ) {
+      const startIndex = (action.payload - 1) * 4;
+      state.arrayForEachPageOfFavoriteVacancies = state.favoriteVacancies.slice(
+        startIndex,
+        startIndex + 4
+      );
     },
   },
 });
@@ -54,6 +69,8 @@ export const {
   setKeyword,
   setPage,
   setFavoriteVacancies,
+  setPageForFavoriteVacancies,
+  setArrayForEachPageOfFavoriteVacancies,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

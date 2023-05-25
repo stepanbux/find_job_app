@@ -4,23 +4,11 @@ import s from "./SearchVacancyPage.module.css";
 import { SearchVacancyWithName } from "../../modules/SearchVacancyWithName/SearchVacancyWithName";
 import { VacancyList } from "../../modules/VacancyList/VacancyList";
 import { useGetVacanciesWithFiltersQuery } from "../../api/mainApi";
-import { Pagination, PaginationItem } from "@mui/material";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useAppDispatch, useAppSelector } from "../../store/redux-hooks";
 import { setPage } from "../../store/slice";
 import { Vacancy } from "../../types/types";
 import { Preloader } from "../../modules/Preloader/Preloader";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#5E96FC",
-      contrastText: "#5E96FC",
-    },
-  },
-});
+import { PaginationComponent } from "../../modules/Pagination/Pagination";
 
 export const SearchVacanciesPage = () => {
   const dispatch = useAppDispatch();
@@ -50,7 +38,7 @@ export const SearchVacanciesPage = () => {
     return <Preloader />;
   }
 
-  const count = data.total / 4 > 500 ? 500 : Math.round(data.total / 4);
+  const count = data.total / 4 > 125 ? 125 : Math.ceil(data.total / 4);
 
   const array = data.objects.map((item: Vacancy) => {
     return {
@@ -71,27 +59,7 @@ export const SearchVacanciesPage = () => {
       <div className={s.vacanciesFromSearch}>
         <SearchVacancyWithName />
         <VacancyList data={array} />
-        <div className={s.pagination}>
-          <ThemeProvider theme={theme}>
-            <Pagination
-              page={page}
-              onChange={onChange}
-              count={count}
-              color="primary"
-              shape="rounded"
-              variant="outlined"
-              renderItem={(item) => (
-                <PaginationItem
-                  slots={{
-                    previous: ChevronLeftIcon,
-                    next: ChevronRightIcon,
-                  }}
-                  {...item}
-                />
-              )}
-            />
-          </ThemeProvider>
-        </div>
+        <PaginationComponent count={count} page={page} onChange={onChange} />
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import { CommonButton } from "../../UI/CommonButton/CommonButton";
 import { useAppDispatch } from "../../store/redux-hooks";
 import {
   setCatalogues,
+  setPage,
   setPaymentFrom,
   setPaymentTo,
   setSelectedIndustry,
@@ -23,15 +24,18 @@ export const Filters = () => {
     dispatch(setCatalogues(data));
   }, [data, dispatch]);
 
-  const onSubmit = useCallback((event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const formProps = Object.fromEntries(formData);
-
-    dispatch(setPaymentFrom(Number(formProps.paymentFrom)));
-    dispatch(setPaymentTo(Number(formProps.paymentTo)));
-    dispatch(setSelectedIndustry(Number(formProps.selectedIndustry)));
-  }, [dispatch]);
+  const onSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      const formData = new FormData(event.currentTarget);
+      const formProps = Object.fromEntries(formData);
+      dispatch(setPage(1));
+      dispatch(setPaymentFrom(Number(formProps.paymentFrom)));
+      dispatch(setPaymentTo(Number(formProps.paymentTo)));
+      dispatch(setSelectedIndustry(Number(formProps.selectedIndustry)));
+    },
+    [dispatch]
+  );
 
   return (
     <form onSubmit={onSubmit} className={s.wrapper}>
