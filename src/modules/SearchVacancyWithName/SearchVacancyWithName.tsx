@@ -1,4 +1,10 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import s from "./SearchVacancyWithName.module.css";
 import { CommonButton } from "../../UI/CommonButton/CommonButton";
 import { useAppDispatch, useAppSelector } from "../../store/redux-hooks";
@@ -10,12 +16,15 @@ export const SearchVacancyWithName = () => {
 
   const [searchText, setSearchText] = useState(keyword);
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const formProps = Object.fromEntries(formData);
-    dispatch(setKeyword(formProps.keyword.toString()));
-  };
+  const onSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      const formData = new FormData(event.currentTarget);
+      const formProps = Object.fromEntries(formData);
+      dispatch(setKeyword(formProps.keyword.toString()));
+    },
+    [dispatch]
+  );
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value);

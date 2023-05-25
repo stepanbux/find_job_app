@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Title } from "../../../../UI/Titles/TitleForVacancySearch/TitleForVacancySearch";
 import s from "./MainTitleForSearch.module.css";
 import cross from "../../../../assets/cross.svg";
@@ -11,11 +11,11 @@ import {
 
 export const MainTitleForSearch = () => {
   const dispatch = useAppDispatch();
-  const onClick = () => {
+  const onClick = useCallback(() => {
     dispatch(setSelectedIndustry(0));
     dispatch(setPaymentFrom(0));
     dispatch(setPaymentTo(0));
-  };
+  }, [dispatch]);
 
   return (
     <div className={s.title}>

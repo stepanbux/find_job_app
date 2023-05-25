@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect } from "react";
+import React, { FormEvent, useCallback, useEffect } from "react";
 import s from "./Filters.module.css";
 import { MainTitleForSearch } from "./components/MainTitleForSearch/MainTitleForSearch";
 import { IndustryForSearch } from "./components/IndustryForSearch/IndustryForSearch";
@@ -23,7 +23,7 @@ export const Filters = () => {
     dispatch(setCatalogues(data));
   }, [data, dispatch]);
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = useCallback((event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const formProps = Object.fromEntries(formData);
@@ -32,7 +32,7 @@ export const Filters = () => {
     dispatch(setPaymentFrom(Number(formProps.paymentFrom)));
     dispatch(setPaymentTo(Number(formProps.paymentTo)));
     dispatch(setSelectedIndustry(Number(formProps.selectedIndustry)));
-  };
+  }, [dispatch]);
 
   return (
     <form onSubmit={onSubmit} className={s.wrapper}>

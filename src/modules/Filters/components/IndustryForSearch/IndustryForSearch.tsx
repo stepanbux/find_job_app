@@ -23,6 +23,7 @@ export const IndustryForSearch = () => {
       );
     });
   }, [catalogues]);
+
   return (
     <div className={s.industry}>
       <Title size={16} title={"Отрасль"} />
@@ -34,7 +35,7 @@ export const IndustryForSearch = () => {
           value={selected}
           onChange={onChange}
         >
-          <option value={0} disabled>
+          <option className={s.option} value={0} disabled>
             Выберите отрасль
           </option>
           {newArray}

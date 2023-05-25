@@ -14,7 +14,7 @@ import { Preloader } from "./modules/Preloader/Preloader";
 
 function App() {
   const dispatch = useAppDispatch();
-  const { isLoading, error } = useAuthUserQuery(null);
+  const { data, isLoading, error } = useAuthUserQuery(null);
 
   useEffect(() => {
     if (!localStorage.getItem("favoriteVacancies")) {
@@ -27,6 +27,8 @@ function App() {
       dispatch(setFavoriteVacancies(favoriteVacancies));
     }
   }, [dispatch]);
+
+  console.log(data);
 
   return (
     <div className={s.wrapper}>
