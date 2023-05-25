@@ -5,7 +5,10 @@ import emptyStar from "../../assets/star.svg";
 import fullStar from "../../assets/fullStar.svg";
 import { useAppDispatch, useAppSelector } from "../../store/redux-hooks";
 import { NewVacancy } from "../../types/types";
-import { setFavoriteVacancies } from "../../store/slice";
+import {
+  setFavoriteVacancies,
+  setPageForFavoriteVacancies,
+} from "../../store/slice";
 
 interface Props {
   data: NewVacancy;
@@ -31,6 +34,7 @@ export const HeaderOfVacancy: FC<Props> = ({ data }) => {
       (item) => item.id === data.id
     );
     setIsStar((prev) => !prev);
+
     const favoriteVacanciesFromLocalStore: NewVacancy[] = JSON.parse(
       localStorage.getItem("favoriteVacancies") || "[]"
     );
@@ -39,6 +43,10 @@ export const HeaderOfVacancy: FC<Props> = ({ data }) => {
       const editFavoriteVacancy = favoriteVacanciesFromLocalStore.filter(
         (item) => item.id !== data.id
       );
+
+      editFavoriteVacancy.length === 4 &&
+        dispatch(setPageForFavoriteVacancies(1));
+
       localStorage.setItem(
         "favoriteVacancies",
         JSON.stringify(editFavoriteVacancy)
