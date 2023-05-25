@@ -1,11 +1,17 @@
 .button {
-    border-radius: 7px;
-    border: none;
-    color: white;
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    cursor: pointer;
-  }
+  border-radius: 7px;
+  border: none;
+  color: white;
+  background-color: #5e96fc;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  cursor: pointer;
+  transition: ease 0.2s;
+}
+
+.button:hover {
+  background-color: #7aa8fe;
+}

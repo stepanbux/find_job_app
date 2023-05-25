@@ -12,7 +12,7 @@ export const CommonButton: FC<Props> = ({ width, height, text }) => {
     <button
       data-elem="search-button"
       type="submit"
-      style={{ width: width, height: height, background: "#5e96fc" }}
+      style={{ width: width, height: height }}
       className={s.button}
     >
       {text}
