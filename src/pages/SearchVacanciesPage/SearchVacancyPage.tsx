@@ -50,6 +50,8 @@ export const SearchVacanciesPage = () => {
     return <Preloader />;
   }
 
+  const count = data.total / 4 > 500 ? 500 : Math.round(data.total / 4);
+
   const array = data.objects.map((item: Vacancy) => {
     return {
       profession: item.profession,
@@ -74,7 +76,7 @@ export const SearchVacanciesPage = () => {
             <Pagination
               page={page}
               onChange={onChange}
-              count={20}
+              count={count}
               color="primary"
               shape="rounded"
               variant="outlined"

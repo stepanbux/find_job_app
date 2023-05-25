@@ -27,7 +27,6 @@ export const Filters = () => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const formProps = Object.fromEntries(formData);
-    console.log(formProps);
 
     dispatch(setPaymentFrom(Number(formProps.paymentFrom)));
     dispatch(setPaymentTo(Number(formProps.paymentTo)));
