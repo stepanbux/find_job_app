@@ -1,18 +1,10 @@
-import React, { ChangeEvent, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import s from "./IndustryForSearch.module.css";
 import { Title } from "../../../../UI/Titles/TitleForVacancySearch/TitleForVacancySearch";
 import { useAppSelector } from "../../../../store/redux-hooks";
 
 export const IndustryForSearch = () => {
   const catalogues = useAppSelector((state) => state.mainReducer.catalogues);
-  const selectedIndustry = useAppSelector(
-    (state) => state.mainReducer.selectedIndustry
-  );
-
-  const [selected, setSelected] = useState(selectedIndustry);
-  const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelected(Number(e.target.value));
-  };
 
   const newArray = useMemo(() => {
     return catalogues.map((item, index) => {
@@ -32,10 +24,9 @@ export const IndustryForSearch = () => {
           data-elem="industry-select"
           className={s.select}
           name="selectedIndustry"
-          value={selected}
-          onChange={onChange}
+          defaultValue={0}
         >
-          <option className={s.option} value={0} disabled>
+          <option className={s.option} value={0}>
             Выберите отрасль
           </option>
           {newArray}

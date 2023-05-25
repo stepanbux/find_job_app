@@ -28,8 +28,6 @@ function App() {
     }
   }, [dispatch]);
 
-  console.log(data);
-
   return (
     <div className={s.wrapper}>
       <Header />
