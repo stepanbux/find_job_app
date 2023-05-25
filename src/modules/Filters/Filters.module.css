@@ -17,3 +17,14 @@
   flex-direction: column;
   gap: 20px;
 }
+
+@media screen and (max-width: 1130px) {
+  .wrapper {
+    position: static;
+    width: 100%;
+  }
+  .inputData {
+    width: 100%;
+    align-items: center;
+  }
+}

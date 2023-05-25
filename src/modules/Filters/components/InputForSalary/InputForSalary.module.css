@@ -6,8 +6,8 @@
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  width: 260px;
-  height: 40px;
+  width: 259px;
+  height: 38px;
   background: #ffffff;
   border: 1px solid #d5d6dc;
   border-radius: 8px;
@@ -43,4 +43,10 @@
   font-size: 14px;
   line-height: 20px;
   color: #acadb9;
+}
+
+@media screen and (max-width: 1130px) {
+  .input {
+    width: calc(100% - 16px);;
+  }
 }

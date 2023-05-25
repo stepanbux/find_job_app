@@ -61,3 +61,18 @@
   -webkit-transform: rotate(45deg);
   pointer-events: none;
 }
+
+@media screen and (max-width: 1130px) {
+  .industry {
+    width: 450px;
+  }
+  .select{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .industry {
+    width: 95%;
+  }
+}

@@ -33,3 +33,18 @@
   color: #3b7cd3;
   cursor: pointer;
 }
+
+@media screen and (max-width: 500px) {
+  .wrapper {
+    margin-top: 70px;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .wrapper {
+    width: 100%;
+  }
+  .title{
+    font-size: 20px;
+  }
+}

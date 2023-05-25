@@ -13,3 +13,21 @@
   align-items: center;
   gap: 16px;
 }
+
+@media screen and (max-width: 1130px) {
+  .wrapper {
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  .vacanciesFromSearch {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .wrapper {
+    margin-top: 15px;
+  }
+}

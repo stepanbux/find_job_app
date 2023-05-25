@@ -8,7 +8,7 @@ interface Props {
 
 export const Title: FC<Props> = ({ size, title }) => {
   return (
-    <span style={{ fontSize: size }} className={`${s.text}`}>
+    <span style={{ fontSize: size }} className={s.text}>
       {title}
     </span>
   );

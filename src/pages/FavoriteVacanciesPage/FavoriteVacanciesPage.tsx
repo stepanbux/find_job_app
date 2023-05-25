@@ -36,17 +36,17 @@ export const FavoritesVacanciesPage = () => {
   };
 
   return (
-    <>
+    <div className={s.wrapper}>
       {favoriteVacancies.length === 0 ? (
         <EmptyPage />
       ) : (
         <>
-          <div className={s.wrapper}>
+          <div className={s.wrapperVacancyList}>
             <VacancyList data={arrayForEachPageOfFavoriteVacancies} />
           </div>
           <PaginationComponent count={count} page={page} onChange={onChange} />
         </>
       )}
-    </>
+    </div>
   );
 };

@@ -31,7 +31,7 @@ input[type="text"] {
   color: black;
 }
 
-.input::placeholder {
+.input, .inputMobile::placeholder {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -40,6 +40,33 @@ input[type="text"] {
   color: #acadb9;
 }
 
+.inputMobile {
+  display: none;
+  background-image: url("../../assets/search.svg");
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: 14px;
+  width: 216px;
+  height: 21px;
+  outline: none;
+  border: none;
+}
+
 .buttonWrapper {
   margin-right: 12px;
+}
+
+@media screen and (max-width: 1130px) {
+  .search {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .input {
+    display: none;
+  }
+  .inputMobile {
+    display: block;
+  }
 }

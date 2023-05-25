@@ -48,6 +48,15 @@ export const SearchVacancyWithName = () => {
         className={s.input}
         placeholder="Введите название вакансии"
       />
+      <input
+        data-elem="search-input"
+        name="keyword"
+        onChange={onChange}
+        value={searchText}
+        type="text"
+        className={s.inputMobile}
+        placeholder="Введите вакансию"
+      />
       <div className={s.buttonWrapper}>
         <CommonButton width={83} height={32} text="Поиск" />
       </div>

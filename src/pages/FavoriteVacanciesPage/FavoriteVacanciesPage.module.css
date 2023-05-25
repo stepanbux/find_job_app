@@ -1,9 +1,22 @@
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapperVacancyList {
+  width: 100%;
   margin-top: 40px;
   margin-bottom: 80px;
-  width: 1116px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
+}
+
+@media screen and (max-width: 500px) {
+  .wrapperVacancyList {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
 }

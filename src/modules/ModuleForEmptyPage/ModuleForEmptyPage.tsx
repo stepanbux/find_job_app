@@ -11,7 +11,7 @@ export const ModuleForEmptyPage = () => {
   };
   return (
     <div className={s.wrapper}>
-      <img src={image} />
+      <img className={s.img} src={image} />
       <span className={s.title}>Упс, здесь еще ничего нет!</span>
       <button onClick={toHome} className={s.button}>
         Поиск Вакансий
