@@ -18,7 +18,6 @@ function App() {
 
   useEffect(() => {
     if (!localStorage.getItem("favoriteVacancies")) {
-      console.log("empty");
       localStorage.setItem("favoriteVacancies", JSON.stringify([]));
     }
     if (localStorage.getItem("favoriteVacancies")) {

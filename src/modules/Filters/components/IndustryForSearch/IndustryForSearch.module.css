@@ -24,7 +24,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #ACADB9;
+  color: #acadb9;
 }
 
 .select::placeholder {
@@ -33,7 +33,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #ACADB9;
+  color: #acadb9;
 }
 
 .select::-ms-expand {
@@ -46,7 +46,6 @@
 
 .select_wrapper::before {
   content: "";
-
   position: absolute;
   top: 30%;
   right: 12px;
@@ -54,16 +53,11 @@
   display: block;
   width: 10px;
   height: 10px;
-
-
-
   border: 1.5px solid #acadb9;
   border-width: 0 1.5px 1.5px 0;
   display: inline-block;
   border-radius: 1.2px;
-
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
-
   pointer-events: none;
 }
