@@ -5,7 +5,7 @@ import { Catalogues, NewCatalogues, NewVacancy } from "../types/types";
 const mainSlice = createSlice({
   name: "mainSlice",
   initialState: {
-    auth: false,
+    auth: 0,
     catalogues: [] as NewCatalogues[],
     selectedIndustry: 0,
     paymentFrom: 0,
@@ -17,6 +17,9 @@ const mainSlice = createSlice({
     arrayForEachPageOfFavoriteVacancies: [] as NewVacancy[],
   },
   reducers: {
+    setAuth(state, action) {
+      state.auth = action.payload;
+    },
     setCatalogues(state, action: PayloadAction<Catalogues[]>) {
       const newCatalogues: NewCatalogues[] = _.map(action.payload, (item) => {
         return {
@@ -62,6 +65,7 @@ const mainSlice = createSlice({
 });
 
 export const {
+  setAuth,
   setCatalogues,
   setSelectedIndustry,
   setPaymentFrom,

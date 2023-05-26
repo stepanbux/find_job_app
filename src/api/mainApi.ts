@@ -35,7 +35,7 @@ export const mainApi = createApi({
 });
 
 export const {
-  useAuthUserQuery,
+  useLazyAuthUserQuery,
   useGetCatalogQuery,
   useGetVacanciesWithFiltersQuery,
   useGetVacancyWithIdQuery,
