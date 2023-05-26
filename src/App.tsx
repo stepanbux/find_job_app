@@ -15,13 +15,10 @@ function App() {
   const dispatch = useAppDispatch();
   const auth = useAppSelector((state) => state.mainReducer.auth);
   const [getAuth, { data, isLoading, error }] = useLazyAuthUserQuery();
-  console.log(auth);
 
   const callAuthUser = useCallback(() => {
-    console.log("callAuth");
     getAuth(null);
     if (data) {
-      console.log("dispatch");
       dispatch(setAuth(data.ttl));
       localStorage.setItem("auth", JSON.stringify(data.ttl));
     }
