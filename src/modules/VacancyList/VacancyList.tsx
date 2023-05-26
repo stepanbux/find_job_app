@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { ItemOfVacancyList } from "../../components/ItemOfVacancyList/ItemOfVacancyList";
+import ItemOfVacancyList from "../../components/ItemOfVacancyList/ItemOfVacancyList";
 import s from "./VacancyList.module.css";
 import { NewVacancy } from "../../types/types";
 

@@ -13,7 +13,7 @@ interface Props {
   currency: string;
 }
 
-export const ShortVacancyInformation: FC<Props> = ({
+const ShortVacancyInformation: FC<Props> = ({
   title,
   payment_from,
   payment_to,
@@ -51,3 +51,5 @@ export const ShortVacancyInformation: FC<Props> = ({
     </div>
   );
 };
+
+export default React.memo(ShortVacancyInformation);

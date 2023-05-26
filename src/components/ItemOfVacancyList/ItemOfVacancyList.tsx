@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
 import s from "./ItemOfVacancyList.module.css";
-import { ShortVacancyInformation } from "../ShortVacancyInformation/ShortVacancyInformation";
+import ShortVacancyInformation from "../ShortVacancyInformation/ShortVacancyInformation";
 import emptyStar from "../../assets/star.svg";
 import fullStar from "../../assets/fullStar.svg";
 import { NewVacancy } from "../../types/types";
@@ -14,7 +14,7 @@ interface Props {
   data: NewVacancy;
 }
 
-export const ItemOfVacancyList: FC<Props> = ({ data }) => {
+const ItemOfVacancyList: FC<Props> = ({ data }) => {
   const dispatch = useAppDispatch();
   const [isStar, setIsStar] = useState(false);
 
@@ -88,3 +88,5 @@ export const ItemOfVacancyList: FC<Props> = ({ data }) => {
     </div>
   );
 };
+
+export default React.memo(ItemOfVacancyList);
