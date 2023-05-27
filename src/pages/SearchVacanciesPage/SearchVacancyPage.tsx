@@ -40,7 +40,7 @@ export const SearchVacanciesPage = () => {
 
   const count = data.total / 4 > 125 ? 125 : Math.ceil(data.total / 4);
 
-  const array = data.objects.map((item: Vacancy) => {
+  const arrayOfVacancy = data.objects.map((item: Vacancy) => {
     return {
       profession: item.profession,
       firm_name: item.firm_name,
@@ -58,7 +58,7 @@ export const SearchVacanciesPage = () => {
       <Filters />
       <div className={s.vacanciesFromSearch}>
         <SearchVacancyWithName />
-        <VacancyList data={array} />
+        <VacancyList data={arrayOfVacancy} />
         <PaginationComponent count={count} page={page} onChange={onChange} />
       </div>
     </div>
