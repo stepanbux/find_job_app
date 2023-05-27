@@ -7,6 +7,21 @@
   justify-content: space-between;
 }
 
+.wrapperPreloader {
+  position: relative;
+  width: 773px;
+  height: 496px;
+  display: flex;
+  flex-direction: column;
+  /* gap: 16px; */
+}
+
+@media screen and (max-width: 1130px) {
+  .wrapperPreloader {
+    width: 100%;
+  }
+}
+
 .vacanciesFromSearch {
   display: flex;
   flex-direction: column;

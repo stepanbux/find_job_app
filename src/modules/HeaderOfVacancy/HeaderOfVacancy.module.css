@@ -1,5 +1,5 @@
 .wrapper {
-  width: 773px;
+  width: 100%;
   min-height: 157px;
   height: auto;
   background-color: #ffffff;
@@ -88,4 +88,19 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+@media screen and (max-width: 440px) {
+  .vacancy_title {
+    font-size: 20px;
+  }
+  .information_salary {
+    font-size: 15px;
+  }
+  .information_condition {
+    font-size: 15px;
+  }
+  .location_city {
+    font-size: 14px;
+  }
 }
