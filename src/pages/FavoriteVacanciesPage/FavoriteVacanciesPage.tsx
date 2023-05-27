@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useMemo } from "react";
-import { VacancyList } from "../../modules/VacancyList/VacancyList";
+import VacancyList from "../../modules/VacancyList/VacancyList";
 import s from "./FavoriteVacanciesPage.module.css";
 import { useAppDispatch, useAppSelector } from "../../store/redux-hooks";
 import { EmptyPage } from "../EmptyPage/EmptyPage";
@@ -26,6 +26,7 @@ export const FavoritesVacanciesPage = () => {
   );
 
   const startIndex = (page - 1) * 4;
+
   const arrayForEachPageOfFavoriteVacancies = favoriteVacancies.slice(
     startIndex,
     startIndex + 4
