@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { Title } from "../../../../UI/Titles/TitleForVacancySearch/TitleForVacancySearch";
+import { Title } from "../../UI/TitleForVacancySearch/TitleForVacancySearch";
 import s from "./MainTitleForSearch.module.css";
 import cross from "../../../../assets/cross.svg";
 import { useAppDispatch } from "../../../../store/redux-hooks";

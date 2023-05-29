@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./SalaryForSearch.module.css";
-import { Title } from "../../../../UI/Titles/TitleForVacancySearch/TitleForVacancySearch";
+import { Title } from "../../UI/TitleForVacancySearch/TitleForVacancySearch";
 import { InputForSalary } from "../InputForSalary/InputForSalary";
 
 export const SalaryForSearch = () => {

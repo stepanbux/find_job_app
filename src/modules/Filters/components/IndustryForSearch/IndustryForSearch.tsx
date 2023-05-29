@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import s from "./IndustryForSearch.module.css";
-import { Title } from "../../../../UI/Titles/TitleForVacancySearch/TitleForVacancySearch";
+import { Title } from "../../UI/TitleForVacancySearch/TitleForVacancySearch";
 import { useAppSelector } from "../../../../store/redux-hooks";
 
 export const IndustryForSearch = () => {

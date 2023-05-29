@@ -31,6 +31,7 @@ export const PaginationComponent: FC<Props> = ({ count, page, onChange }) => {
           color="primary"
           shape="rounded"
           variant="outlined"
+          siblingCount={0} 
           renderItem={(item) => (
             <PaginationItem
               slots={{
