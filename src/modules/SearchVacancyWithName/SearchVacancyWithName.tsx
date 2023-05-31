@@ -1,18 +1,12 @@
-import React, {
-  ChangeEvent,
-  FormEvent,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import React, { FormEvent, useCallback, useEffect } from "react";
+
 import s from "./SearchVacancyWithName.module.css";
 import { CommonButton } from "../../UI/CommonButton/CommonButton";
-import { useAppDispatch, useAppSelector } from "../../store/redux-hooks";
+import { useAppDispatch } from "../../store/redux-hooks";
 import { setKeyword } from "../../store/slice";
 
 export const SearchVacancyWithName = () => {
   const dispatch = useAppDispatch();
-  const keyword = useAppSelector((state) => state.mainReducer.keyword);
 
   const onSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -33,7 +27,6 @@ export const SearchVacancyWithName = () => {
 
   return (
     <form onSubmit={onSubmit} className={s.search}>
-      {/*MATCH MEDIA*/}
       <input
         data-elem="search-input"
         name="keyword"
