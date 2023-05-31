@@ -9,7 +9,7 @@ interface Props {
   data: NewVacancy[];
 }
 
-const VacancyList: FC<Props> = ({ isFetching, data }) => {
+export const VacancyList: FC<Props> = ({ isFetching, data }) => {
   return (
     <div className={s.wrapper}>
       {isFetching ? (
@@ -22,5 +22,3 @@ const VacancyList: FC<Props> = ({ isFetching, data }) => {
     </div>
   );
 };
-
-export default React.memo(VacancyList);

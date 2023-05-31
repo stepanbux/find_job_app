@@ -1,4 +1,8 @@
-import React, { FormEvent, useCallback, useEffect } from "react";
+import React, {
+  FormEvent,
+  useCallback,
+  useEffect,
+} from "react";
 
 import s from "./SearchVacancyWithName.module.css";
 import { CommonButton } from "../../UI/CommonButton/CommonButton";

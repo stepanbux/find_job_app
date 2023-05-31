@@ -2,7 +2,7 @@ import React, { ChangeEvent, useMemo } from "react";
 import { Filters } from "../../modules/Filters/Filters";
 import s from "./SearchVacancyPage.module.css";
 import { SearchVacancyWithName } from "../../modules/SearchVacancyWithName/SearchVacancyWithName";
-import VacancyList from "../../modules/VacancyList/VacancyList";
+import { VacancyList } from "../../modules/VacancyList/VacancyList";
 import { useGetVacanciesWithFiltersQuery } from "../../api/mainApi";
 import { useAppDispatch, useAppSelector } from "../../store/redux-hooks";
 import { setPage } from "../../store/slice";

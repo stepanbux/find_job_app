@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from "react";
-import VacancyList from "../../modules/VacancyList/VacancyList";
+import { VacancyList } from "../../modules/VacancyList/VacancyList";
 import s from "./FavoriteVacanciesPage.module.css";
 import { useAppDispatch, useAppSelector } from "../../store/redux-hooks";
 import { EmptyPage } from "../EmptyPage/EmptyPage";
