@@ -1,11 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import _ from "lodash";
-import { Catalogues, NewCatalogues, NewVacancy } from "../types/types";
+import { NewVacancy } from "../types/types";
 
 const mainSlice = createSlice({
   name: "mainSlice",
   initialState: {
-    catalogues: [] as NewCatalogues[],
     selectedIndustry: 0,
     paymentFrom: 0,
     paymentTo: 0,
@@ -16,16 +15,6 @@ const mainSlice = createSlice({
     arrayForEachPageOfFavoriteVacancies: [] as NewVacancy[],
   },
   reducers: {
-    setCatalogues(state, action: PayloadAction<Catalogues[]>) {
-      const newCatalogues: NewCatalogues[] = _.map(action.payload, (item) => {
-        return {
-          key: item.key,
-          title_rus: item.title_rus,
-          title_trimmed: item.title_trimmed,
-        };
-      });
-      state.catalogues = newCatalogues;
-    },
     setSelectedIndustry(state, action: PayloadAction<number>) {
       state.selectedIndustry = action.payload;
     },
@@ -61,7 +50,6 @@ const mainSlice = createSlice({
 });
 
 export const {
-  setCatalogues,
   setSelectedIndustry,
   setPaymentFrom,
   setPaymentTo,
