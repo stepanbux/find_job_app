@@ -1,14 +1,11 @@
-import React, { FC, useCallback, useEffect, useState } from "react";
+import React, { FC, useCallback } from "react";
 import s from "./HeaderOfVacancy.module.css";
 import locationLogo from "../../assets/location.svg";
 import emptyStar from "../../assets/star.svg";
 import fullStar from "../../assets/fullStar.svg";
 import { useAppDispatch, useAppSelector } from "../../store/redux-hooks";
 import { NewVacancy } from "../../types/types";
-import {
-  setFavoriteVacancies,
-  setPageForFavoriteVacancies,
-} from "../../store/slice";
+import { setFavoriteVacancies } from "../../store/slice";
 
 interface Props {
   data: NewVacancy;
@@ -16,56 +13,29 @@ interface Props {
 
 export const HeaderOfVacancy: FC<Props> = ({ data }) => {
   const dispatch = useAppDispatch();
-  const [isStar, setIsStar] = useState(false);
 
   const favoriteVacancies = useAppSelector(
     (state) => state.mainReducer.favoriteVacancies
   );
 
-  useEffect(() => {
-    const isFavoriteVacancy = favoriteVacancies.some(
-      (item) => item.id === data.id
-    );
-    setIsStar(isFavoriteVacancy);
-  }, [favoriteVacancies, data.id]);
+  const isFavoriteVacancy = favoriteVacancies.some(
+    (item) => item.id === data.id
+  );
 
   const onClick = useCallback(() => {
-    const isFavoriteVacancy = favoriteVacancies.some(
-      (item) => item.id === data.id
-    );
-    setIsStar((prev) => !prev);
-
-    const favoriteVacanciesFromLocalStore: NewVacancy[] = JSON.parse(
-      localStorage.getItem("favoriteVacancies") || "[]"
-    );
+    let newVacancies = [] as NewVacancy[];
 
     if (isFavoriteVacancy) {
-      const editFavoriteVacancy = favoriteVacanciesFromLocalStore.filter(
-        (item) => item.id !== data.id
-      );
-
-      editFavoriteVacancy.length === 4 &&
-        dispatch(setPageForFavoriteVacancies(1));
-
-      localStorage.setItem(
-        "favoriteVacancies",
-        JSON.stringify(editFavoriteVacancy)
-      );
+      newVacancies = favoriteVacancies.filter((item) => item.id !== data.id);
     }
 
     if (!isFavoriteVacancy) {
-      favoriteVacanciesFromLocalStore.push(data);
-      localStorage.setItem(
-        "favoriteVacancies",
-        JSON.stringify(favoriteVacanciesFromLocalStore)
-      );
+      newVacancies = [...favoriteVacancies, data];
     }
 
-    const newFavoriteVacancies = JSON.parse(
-      localStorage.getItem("favoriteVacancies") || "[]"
-    );
-    dispatch(setFavoriteVacancies(newFavoriteVacancies));
-  }, [data, dispatch, favoriteVacancies]);
+    dispatch(setFavoriteVacancies(newVacancies));
+    localStorage.setItem("favoriteVacancies", JSON.stringify(newVacancies));
+  }, [data, dispatch, favoriteVacancies, isFavoriteVacancy]);
 
   return (
     <div className={s.wrapper}>
@@ -88,7 +58,10 @@ export const HeaderOfVacancy: FC<Props> = ({ data }) => {
         </div>
       </div>
       <button onClick={onClick} className={s.button}>
-        <img className={s.star} src={isStar ? fullStar : emptyStar} />
+        <img
+          className={s.star}
+          src={isFavoriteVacancy ? fullStar : emptyStar}
+        />
       </button>
     </div>
   );

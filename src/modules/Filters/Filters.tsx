@@ -6,23 +6,14 @@ import { SalaryForSearch } from "./components/SalaryForSearch/SalaryForSearch";
 import { CommonButton } from "../../UI/CommonButton/CommonButton";
 import { useAppDispatch } from "../../store/redux-hooks";
 import {
-  setCatalogues,
   setPage,
   setPaymentFrom,
   setPaymentTo,
   setSelectedIndustry,
 } from "../../store/slice";
-import { useGetCatalogQuery } from "../../api/mainApi";
-
+ 
 export const Filters = () => {
   const dispatch = useAppDispatch();
-  const { data, isLoading, error } = useGetCatalogQuery(null, {
-    refetchOnReconnect: true,
-  });
-
-  useEffect(() => {
-    dispatch(setCatalogues(data));
-  }, [data, dispatch]);
 
   const onSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -30,9 +21,9 @@ export const Filters = () => {
       const formData = new FormData(event.currentTarget);
       const formProps = Object.fromEntries(formData);
       dispatch(setPage(1));
-      dispatch(setPaymentFrom(Number(formProps.paymentFrom)));
-      dispatch(setPaymentTo(Number(formProps.paymentTo)));
-      dispatch(setSelectedIndustry(Number(formProps.selectedIndustry)));
+      dispatch(setPaymentFrom(+formProps.paymentFrom));
+      dispatch(setPaymentTo(+formProps.paymentTo));
+      dispatch(setSelectedIndustry(+formProps.selectedIndustry));
     },
     [dispatch]
   );

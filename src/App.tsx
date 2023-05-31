@@ -17,7 +17,8 @@ function App() {
   const [getAuth, { data, isLoading, error }] = useLazyAuthUserQuery();
 
   const callAuthUser = useCallback(() => {
-    getAuth(null);
+    getAuth();
+    
     if (data) {
       dispatch(setAuth(data.ttl));
       localStorage.setItem("auth", JSON.stringify(data.ttl));
@@ -31,34 +32,29 @@ function App() {
   }, [auth, callAuthUser, dispatch]);
 
   useEffect(() => {
-    {
-      !localStorage.getItem("auth")
-        ? callAuthUser()
-        : auth < Date.now() / 1000 && pushAuthInLocalStorage();
-    }
+    const hasTtl = localStorage.getItem("auth");
 
-    {
-      !localStorage.getItem("favoriteVacancies")
-        ? localStorage.setItem("favoriteVacancies", JSON.stringify([]))
-        : dispatch(
-            setFavoriteVacancies(
-              JSON.parse(localStorage.getItem("favoriteVacancies") || "[]")
-            )
-          );
-    }
+    !hasTtl
+      ? callAuthUser()
+      : auth < Date.now() / 1000 && pushAuthInLocalStorage();
+
+    const FV = localStorage.getItem("favoriteVacancies");
+    const stringifiedFV = JSON.parse(FV || "[]");
+
+    !FV
+      ? localStorage.setItem("favoriteVacancies", JSON.stringify([]))
+      : dispatch(setFavoriteVacancies(stringifiedFV));
   }, [auth, callAuthUser, data, dispatch, getAuth, pushAuthInLocalStorage]);
+
+  console.log(data);
 
   return (
     <div className={s.wrapper}>
       <Header />
       <div className={s.content}>
         {error && <EmptyPage />}
-        {isLoading && (
-          <div>
-            <Preloader />
-          </div>
-        )}
-        {!isLoading && (
+        {isLoading && <Preloader />}
+        {!error && (
           <Routes>
             <Route path="/" element={<SearchVacanciesPage />} />
             <Route path="/favorites" element={<FavoritesVacanciesPage />} />

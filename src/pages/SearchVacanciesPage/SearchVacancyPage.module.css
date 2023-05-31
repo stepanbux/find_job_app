@@ -13,7 +13,6 @@
   height: 496px;
   display: flex;
   flex-direction: column;
-  /* gap: 16px; */
 }
 
 @media screen and (max-width: 1130px) {
@@ -23,6 +22,8 @@
 }
 
 .vacanciesFromSearch {
+  min-height: 660px;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;

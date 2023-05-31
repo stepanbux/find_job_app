@@ -8,11 +8,14 @@ import { Preloader } from "../../modules/Preloader/Preloader";
 
 export const VacancyPage = () => {
   const { idOfVacancy } = useParams();
-  const { data, isLoading } = useGetVacancyWithIdQuery({
-    idOfVacancy: Number(idOfVacancy),
-  });
+  const { data, isLoading } = useGetVacancyWithIdQuery({ idOfVacancy });
 
-  if (isLoading) return <Preloader />;
+  if (isLoading) {
+    return <Preloader />;
+  }
+
+  console.log(data);
+
   return (
     <div className={s.wrapper}>
       <HeaderOfVacancy

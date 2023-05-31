@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useMemo } from "react";
 import { Filters } from "../../modules/Filters/Filters";
 import s from "./SearchVacancyPage.module.css";
 import { SearchVacancyWithName } from "../../modules/SearchVacancyWithName/SearchVacancyWithName";
@@ -20,45 +20,52 @@ export const SearchVacanciesPage = () => {
   );
   const page = useAppSelector((state) => state.mainReducer.page);
 
-  const { data, isLoading, error } = useGetVacanciesWithFiltersQuery({
-    keyword,
-    paymentFrom,
-    paymentTo,
-    selectedIndustry,
-    page,
-  });
+  const { data, isLoading, isFetching, error } =
+    useGetVacanciesWithFiltersQuery({
+      keyword,
+      paymentFrom,
+      paymentTo,
+      selectedIndustry,
+      page,
+    });
 
   const onChange = (event: ChangeEvent<unknown>, page: number) => {
     dispatch(setPage(page));
   };
 
-  if (error) return <div>Something went wrong...</div>;
+  const arrayOfVacancy = useMemo(
+    () =>
+      data &&
+      data.objects.map((item: Vacancy) => {
+        return {
+          profession: item.profession,
+          firm_name: item.firm_name,
+          town: item.town.title,
+          type_of_work: item.type_of_work.title,
+          payment_from: item.payment_from,
+          payment_to: item.payment_to,
+          currency: item.currency,
+          id: item.id,
+        };
+      }),
+    [data]
+  );
+
+  if (error) {
+    return <div>Something went wrong...</div>;
+  }
 
   if (isLoading) {
     return <Preloader />;
   }
 
   const count = data.total / 4 > 125 ? 125 : Math.ceil(data.total / 4);
-
-  const arrayOfVacancy = data.objects.map((item: Vacancy) => {
-    return {
-      profession: item.profession,
-      firm_name: item.firm_name,
-      town: item.town.title,
-      type_of_work: item.type_of_work.title,
-      payment_from: item.payment_from,
-      payment_to: item.payment_to,
-      currency: item.currency,
-      id: item.id,
-    };
-  });
-
   return (
     <div className={s.wrapper}>
       <Filters />
       <div className={s.vacanciesFromSearch}>
         <SearchVacancyWithName />
-        <VacancyList data={arrayOfVacancy} />
+        <VacancyList isFetching={isFetching} data={arrayOfVacancy} />
         <PaginationComponent count={count} page={page} onChange={onChange} />
       </div>
     </div>

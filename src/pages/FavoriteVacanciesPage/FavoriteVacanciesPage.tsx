@@ -15,15 +15,10 @@ export const FavoritesVacanciesPage = () => {
     (state) => state.mainReducer.favoriteVacancies
   );
 
-  const count = useMemo(
-    () =>
-      favoriteVacancies.length / 4 > 125
-        ? 125
-        : Math.ceil(favoriteVacancies.length / 4) < 1
-        ? 1
-        : Math.ceil(favoriteVacancies.length / 4),
-    [favoriteVacancies.length]
-  );
+  const count =
+    favoriteVacancies.length / 4 > 125
+      ? 125
+      : Math.ceil(favoriteVacancies.length / 4);
 
   const startIndex = (page - 1) * 4;
 
@@ -43,7 +38,10 @@ export const FavoritesVacanciesPage = () => {
       ) : (
         <>
           <div className={s.wrapperVacancyList}>
-            <VacancyList data={arrayForEachPageOfFavoriteVacancies} />
+            <VacancyList
+              isFetching={false}
+              data={arrayForEachPageOfFavoriteVacancies}
+            />
           </div>
           <PaginationComponent count={count} page={page} onChange={onChange} />
         </>

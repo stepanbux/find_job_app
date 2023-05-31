@@ -1,20 +1,12 @@
-import React, { useMemo } from "react";
+import React from "react";
 import s from "./IndustryForSearch.module.css";
 import { Title } from "../../UI/TitleForVacancySearch/TitleForVacancySearch";
-import { useAppSelector } from "../../../../store/redux-hooks";
+import { useGetCatalogQuery } from "../../../../api/mainApi";
 
 export const IndustryForSearch = () => {
-  const catalogues = useAppSelector((state) => state.mainReducer.catalogues);
-
-  const newArray = useMemo(() => {
-    return catalogues.map((item, index) => {
-      return (
-        <option value={`${item.key}`} key={index}>
-          {item.title_rus}
-        </option>
-      );
-    });
-  }, [catalogues]);
+  const { data, isLoading, error } = useGetCatalogQuery(undefined, {
+    refetchOnReconnect: true,
+  });
 
   return (
     <div className={s.industry}>
@@ -29,7 +21,14 @@ export const IndustryForSearch = () => {
           <option className={s.option} value={0}>
             Выберите отрасль
           </option>
-          {newArray}
+          {data &&
+            data.map((item, index) => {
+              return (
+                <option value={`${item.key}`} key={index}>
+                  {item.title_rus}
+                </option>
+              );
+            })}
         </select>
       </div>
     </div>

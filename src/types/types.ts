@@ -1,3 +1,12 @@
+export interface Auth {
+  access_token: string;
+  expires_in: number;
+  refresh_token: string;
+  reg_user_resumes_count: number;
+  token_type: string;
+  ttl: number;
+}
+
 export interface Positions {
   title_rus: string;
   url_rus: string;
@@ -54,13 +63,7 @@ export interface Vacancy {
   id: number;
 }
 
-export interface NewVacancy {
-  profession: string;
-  firm_name: string;
+export interface NewVacancy extends Omit<Vacancy, "town" | "type_of_work"> {
   town: string;
   type_of_work: string;
-  payment_from: number;
-  payment_to: number;
-  currency: string;
-  id: number;
 }

@@ -14,8 +14,6 @@ export const SearchVacancyWithName = () => {
   const dispatch = useAppDispatch();
   const keyword = useAppSelector((state) => state.mainReducer.keyword);
 
-  const [searchText, setSearchText] = useState(keyword);
-
   const onSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
@@ -26,10 +24,6 @@ export const SearchVacancyWithName = () => {
     [dispatch]
   );
 
-  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchText(event.target.value);
-  };
-
   useEffect(
     () => () => {
       dispatch(setKeyword(""));
@@ -39,20 +33,17 @@ export const SearchVacancyWithName = () => {
 
   return (
     <form onSubmit={onSubmit} className={s.search}>
+      {/*MATCH MEDIA*/}
       <input
         data-elem="search-input"
         name="keyword"
-        onChange={onChange}
-        value={searchText}
         type="text"
         className={s.input}
-        placeholder="Введите название вакансии"
+        placeholder="Введите вакансию"
       />
       <input
         data-elem="search-input"
         name="keyword"
-        onChange={onChange}
-        value={searchText}
         type="text"
         className={s.inputMobile}
         placeholder="Введите вакансию"

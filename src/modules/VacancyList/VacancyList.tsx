@@ -2,17 +2,25 @@ import React, { FC } from "react";
 import ItemOfVacancyList from "../../components/ItemOfVacancyList/ItemOfVacancyList";
 import s from "./VacancyList.module.css";
 import { NewVacancy } from "../../types/types";
+import { Preloader } from "../Preloader/Preloader";
 
 interface Props {
+  isFetching: boolean;
   data: NewVacancy[];
 }
 
-const VacancyList: FC<Props> = ({ data }) => {
-  const arrayVacancies = data.map((item, index) => {
-    return <ItemOfVacancyList data={item} key={index} />;
-  });
-
-  return <div className={s.wrapper}>{arrayVacancies}</div>;
+const VacancyList: FC<Props> = ({ isFetching, data }) => {
+  return (
+    <div className={s.wrapper}>
+      {isFetching ? (
+        <Preloader />
+      ) : (
+        data.map((item, index) => {
+          return <ItemOfVacancyList data={item} key={index} />;
+        })
+      )}
+    </div>
+  );
 };
 
 export default React.memo(VacancyList);

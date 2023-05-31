@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import s from "./TitleForVacancySearch.module.css";
 
 interface Props {
@@ -7,8 +7,14 @@ interface Props {
 }
 
 export const Title: FC<Props> = ({ size, title }) => {
+  const style = useMemo(() => {
+    return {
+      fontSize: size,
+    };
+  }, [size]);
+
   return (
-    <span style={{ fontSize: size }} className={s.text}>
+    <span style={style} className={s.text}>
       {title}
     </span>
   );
