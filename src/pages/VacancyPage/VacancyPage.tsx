@@ -14,8 +14,6 @@ export const VacancyPage = () => {
     return <Preloader />;
   }
 
-  console.log(data);
-
   return (
     <div className={s.wrapper}>
       <HeaderOfVacancy

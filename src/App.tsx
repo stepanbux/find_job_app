@@ -7,36 +7,26 @@ import { Header } from "./modules/Header/Header";
 import { FavoritesVacanciesPage } from "./pages/FavoriteVacanciesPage/FavoriteVacanciesPage";
 import { EmptyPage } from "./pages/EmptyPage/EmptyPage";
 import { useLazyAuthUserQuery } from "./api/mainApi";
-import { useAppDispatch, useAppSelector } from "./store/redux-hooks";
-import { setAuth, setFavoriteVacancies } from "./store/slice";
+import { useAppDispatch } from "./store/redux-hooks";
+import { setFavoriteVacancies } from "./store/slice";
 import { Preloader } from "./modules/Preloader/Preloader";
 
 function App() {
   const dispatch = useAppDispatch();
-  const auth = useAppSelector((state) => state.mainReducer.auth);
   const [getAuth, { data, isLoading, error }] = useLazyAuthUserQuery();
 
   const callAuthUser = useCallback(() => {
     getAuth();
-    
+
     if (data) {
-      dispatch(setAuth(data.ttl));
       localStorage.setItem("auth", JSON.stringify(data.ttl));
     }
-  }, [data, dispatch, getAuth]);
-
-  const pushAuthInLocalStorage = useCallback(() => {
-    auth === 0
-      ? dispatch(setAuth(JSON.parse(localStorage.getItem("auth") || "0")))
-      : callAuthUser();
-  }, [auth, callAuthUser, dispatch]);
+  }, [data, getAuth]);
 
   useEffect(() => {
-    const hasTtl = localStorage.getItem("auth");
+    const ttl = localStorage.getItem("auth");
 
-    !hasTtl
-      ? callAuthUser()
-      : auth < Date.now() / 1000 && pushAuthInLocalStorage();
+    !ttl ? callAuthUser() : +ttl < Date.now() / 1000 && callAuthUser();
 
     const FV = localStorage.getItem("favoriteVacancies");
     const stringifiedFV = JSON.parse(FV || "[]");
@@ -44,9 +34,7 @@ function App() {
     !FV
       ? localStorage.setItem("favoriteVacancies", JSON.stringify([]))
       : dispatch(setFavoriteVacancies(stringifiedFV));
-  }, [auth, callAuthUser, data, dispatch, getAuth, pushAuthInLocalStorage]);
-
-  console.log(data);
+  }, [callAuthUser, data, dispatch, getAuth]);
 
   return (
     <div className={s.wrapper}>
