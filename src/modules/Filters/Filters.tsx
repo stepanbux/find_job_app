@@ -1,4 +1,4 @@
-import React, { FormEvent, useCallback, useEffect } from "react";
+import React, { FormEvent, useCallback } from "react";
 import s from "./Filters.module.css";
 import { MainTitleForSearch } from "./components/MainTitleForSearch/MainTitleForSearch";
 import { IndustryForSearch } from "./components/IndustryForSearch/IndustryForSearch";
