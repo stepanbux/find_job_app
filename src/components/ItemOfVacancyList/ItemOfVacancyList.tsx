@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState, memo } from "react";
+import React, { FC, useCallback, memo } from "react";
 import s from "./ItemOfVacancyList.module.css";
 import ShortVacancyInformation from "../ShortVacancyInformation/ShortVacancyInformation";
 import emptyStar from "../../assets/star.svg";
