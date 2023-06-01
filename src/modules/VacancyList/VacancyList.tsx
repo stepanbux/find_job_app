@@ -3,6 +3,7 @@ import ItemOfVacancyList from "../../components/ItemOfVacancyList/ItemOfVacancyL
 import s from "./VacancyList.module.css";
 import { NewVacancy } from "../../types/types";
 import { Preloader } from "../Preloader/Preloader";
+import { ModuleForEmptyPage } from "../ModuleForEmptyPage/ModuleForEmptyPage";
 
 interface Props {
   isFetching: boolean;
@@ -12,6 +13,7 @@ interface Props {
 export const VacancyList: FC<Props> = ({ isFetching, data }) => {
   return (
     <div className={s.wrapper}>
+      {data.length === 0 && <ModuleForEmptyPage isShowButton={false}/>}
       {isFetching ? (
         <Preloader />
       ) : (

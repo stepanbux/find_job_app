@@ -5,11 +5,11 @@ import { VacancyPage } from "./pages/VacancyPage/VacancyPage";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./modules/Header/Header";
 import { FavoritesVacanciesPage } from "./pages/FavoriteVacanciesPage/FavoriteVacanciesPage";
-import { EmptyPage } from "./pages/EmptyPage/EmptyPage";
 import { useLazyAuthUserQuery } from "./api/mainApi";
 import { useAppDispatch } from "./store/redux-hooks";
 import { setFavoriteVacancies } from "./store/slice";
 import { Preloader } from "./modules/Preloader/Preloader";
+import { ModuleForEmptyPage } from "./modules/ModuleForEmptyPage/ModuleForEmptyPage";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -40,14 +40,13 @@ function App() {
     <div className={s.wrapper}>
       <Header />
       <div className={s.content}>
-        {error && <EmptyPage />}
+        {error && <ModuleForEmptyPage isShowButton/>}
         {isLoading && <Preloader />}
         {!error && (
           <Routes>
             <Route path="/" element={<SearchVacanciesPage />} />
             <Route path="/favorites" element={<FavoritesVacanciesPage />} />
             <Route path="/vacancy/:idOfVacancy" element={<VacancyPage />} />
-            <Route path="/empty_page" element={<EmptyPage />} />
           </Routes>
         )}
       </div>

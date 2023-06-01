@@ -2,9 +2,9 @@ import React, { ChangeEvent } from "react";
 import { VacancyList } from "../../modules/VacancyList/VacancyList";
 import s from "./FavoriteVacanciesPage.module.css";
 import { useAppDispatch, useAppSelector } from "../../store/redux-hooks";
-import { EmptyPage } from "../EmptyPage/EmptyPage";
 import { PaginationComponent } from "../../modules/Pagination/Pagination";
 import { setPageForFavoriteVacancies } from "../../store/slice";
+import { ModuleForEmptyPage } from "../../modules/ModuleForEmptyPage/ModuleForEmptyPage";
 
 export const FavoritesVacanciesPage = () => {
   const page = useAppSelector(
@@ -34,7 +34,7 @@ export const FavoritesVacanciesPage = () => {
   return (
     <div className={s.wrapper}>
       {favoriteVacancies.length === 0 ? (
-        <EmptyPage />
+        <ModuleForEmptyPage isShowButton/>
       ) : (
         <>
           <div className={s.wrapperVacancyList}>
