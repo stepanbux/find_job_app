@@ -14,7 +14,6 @@ export const SearchVacancyWithName = () => {
       event.preventDefault();
       const formData = new FormData(event.currentTarget);
       const formProps = Object.fromEntries(formData);
-      console.log(formProps);
       dispatch(setKeyword(formProps.keyword.toString()));
     },
     [dispatch]
