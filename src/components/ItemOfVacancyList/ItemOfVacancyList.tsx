@@ -1,7 +1,7 @@
 import React, { FC, useCallback, memo } from "react";
 import s from "./ItemOfVacancyList.module.css";
 import ShortVacancyInformation from "../ShortVacancyInformation/ShortVacancyInformation";
-import emptyStar from "../../assets/star.svg";
+import emptyStar from "../../assets/emptyStar.svg";
 import fullStar from "../../assets/fullStar.svg";
 import { NewVacancy } from "../../types/types";
 import { useAppDispatch, useAppSelector } from "../../store/redux-hooks";
