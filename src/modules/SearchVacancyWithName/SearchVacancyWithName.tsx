@@ -1,9 +1,10 @@
 import React, { FormEvent, useCallback, useEffect, useState } from "react";
 
-import s from "./SearchVacancyWithName.module.css";
 import { CommonButton } from "../../UI/CommonButton/CommonButton";
 import { useAppDispatch } from "../../store/redux-hooks";
 import { setKeyword } from "../../store/slice";
+
+import s from "./SearchVacancyWithName.module.css";
 
 export const SearchVacancyWithName = () => {
   const dispatch = useAppDispatch();

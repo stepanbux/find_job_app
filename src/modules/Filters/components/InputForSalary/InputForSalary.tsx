@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+
 import s from "./InputForSalary.module.css";
 
 interface Props {

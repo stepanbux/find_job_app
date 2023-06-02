@@ -1,9 +1,12 @@
 import React, { FC } from "react";
+
 import ItemOfVacancyList from "../../components/ItemOfVacancyList/ItemOfVacancyList";
-import s from "./VacancyList.module.css";
+
 import { NewVacancy } from "../../types/types";
 import { Preloader } from "../Preloader/Preloader";
 import { ModuleForEmptyPage } from "../ModuleForEmptyPage/ModuleForEmptyPage";
+
+import s from "./VacancyList.module.css";
 
 interface Props {
   isFetching: boolean;

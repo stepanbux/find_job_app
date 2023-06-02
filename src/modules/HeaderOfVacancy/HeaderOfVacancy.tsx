@@ -1,11 +1,13 @@
 import React, { FC, useCallback } from "react";
-import s from "./HeaderOfVacancy.module.css";
+
 import locationLogo from "../../assets/location.svg";
 import emptyStar from "../../assets/emptyStar.svg";
 import fullStar from "../../assets/fullStar.svg";
 import { useAppDispatch, useAppSelector } from "../../store/redux-hooks";
 import { NewVacancy } from "../../types/types";
 import { setFavoriteVacancies } from "../../store/slice";
+
+import s from "./HeaderOfVacancy.module.css";
 
 interface Props {
   data: NewVacancy;

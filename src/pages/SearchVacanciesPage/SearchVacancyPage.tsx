@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useMemo } from "react";
+
 import { Filters } from "../../modules/Filters/Filters";
-import s from "./SearchVacancyPage.module.css";
+
 import { SearchVacancyWithName } from "../../modules/SearchVacancyWithName/SearchVacancyWithName";
 import { VacancyList } from "../../modules/VacancyList/VacancyList";
 import { useGetVacanciesWithFiltersQuery } from "../../api/mainApi";
@@ -9,6 +10,8 @@ import { setPage } from "../../store/slice";
 import { Vacancy } from "../../types/types";
 import { Preloader } from "../../modules/Preloader/Preloader";
 import { PaginationComponent } from "../../modules/Pagination/Pagination";
+
+import s from "./SearchVacancyPage.module.css";
 
 export const SearchVacanciesPage = () => {
   const dispatch = useAppDispatch();

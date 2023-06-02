@@ -3,6 +3,7 @@ import { ThemeProvider } from "@emotion/react";
 import { Pagination, PaginationItem, createTheme } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
 import s from "./Pagination.module.css";
 
 const theme = createTheme({

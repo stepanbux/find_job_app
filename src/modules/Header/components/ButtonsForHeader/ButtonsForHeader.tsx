@@ -1,6 +1,8 @@
 import React from "react";
-import s from "./ButtonsForHeader.module.css";
+
 import { NavLink } from "react-router-dom";
+
+import s from "./ButtonsForHeader.module.css";
 
 const setActive = ({ isActive }: { isActive: boolean }): string =>
   isActive ? s.activeLink : s.default;

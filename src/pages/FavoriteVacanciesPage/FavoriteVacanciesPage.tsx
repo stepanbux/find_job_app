@@ -1,10 +1,13 @@
 import React, { ChangeEvent } from "react";
+
 import { VacancyList } from "../../modules/VacancyList/VacancyList";
-import s from "./FavoriteVacanciesPage.module.css";
+
 import { useAppDispatch, useAppSelector } from "../../store/redux-hooks";
 import { PaginationComponent } from "../../modules/Pagination/Pagination";
 import { setPageForFavoriteVacancies } from "../../store/slice";
 import { ModuleForEmptyPage } from "../../modules/ModuleForEmptyPage/ModuleForEmptyPage";
+
+import s from "./FavoriteVacanciesPage.module.css";
 
 export const FavoritesVacanciesPage = () => {
   const page = useAppSelector(

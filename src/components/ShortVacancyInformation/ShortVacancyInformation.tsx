@@ -1,7 +1,9 @@
 import React, { FC } from "react";
-import s from "./ShortVacancyInformation.module.css";
-import locationLogo from "../../assets/location.svg";
 import { useNavigate } from "react-router-dom";
+
+import locationLogo from "../../assets/location.svg";
+
+import s from "./ShortVacancyInformation.module.css";
 
 interface Props {
   title: string;

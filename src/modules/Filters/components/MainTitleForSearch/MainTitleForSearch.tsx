@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
+
 import { Title } from "../../UI/TitleForVacancySearch/TitleForVacancySearch";
-import s from "./MainTitleForSearch.module.css";
+
 import cross from "../../../../assets/cross.svg";
 import { useAppDispatch } from "../../../../store/redux-hooks";
 import {
@@ -8,6 +9,8 @@ import {
   setPaymentTo,
   setSelectedIndustry,
 } from "../../../../store/slice";
+
+import s from "./MainTitleForSearch.module.css";
 
 export const MainTitleForSearch = () => {
   const dispatch = useAppDispatch();

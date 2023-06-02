@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
-import mainReducer from "./slice";
 
 import { mainApi } from "../api/mainApi";
+
+import mainReducer from "./slice";
+
 
 const rootReducer = combineReducers({
   [mainApi.reducerPath]: mainApi.reducer,

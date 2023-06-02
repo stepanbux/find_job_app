@@ -1,4 +1,5 @@
 import React, { FC, useMemo } from "react";
+
 import s from "./TitleForVacancySearch.module.css";
 
 interface Props {

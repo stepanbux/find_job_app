@@ -1,9 +1,15 @@
 import React from "react";
-import s from "./Header.module.css";
-import imageLogo from "../../assets/imageLogo.svg";
-import textLogo from "../../assets/textLogo.svg";
-import { ButtonsForHeader } from "./components/ButtonsForHeader/ButtonsForHeader";
+
 import { useNavigate } from "react-router-dom";
+
+import imageLogo from "../../assets/imageLogo.svg";
+
+import textLogo from "../../assets/textLogo.svg";
+
+import s from "./Header.module.css";
+
+import { ButtonsForHeader } from "./components/ButtonsForHeader/ButtonsForHeader";
+
 
 export const Header = () => {
   const navigate = useNavigate();

@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect } from "react";
+
+import { Routes, Route } from "react-router-dom";
+
 import s from "./App.module.css";
 import { SearchVacanciesPage } from "./pages/SearchVacanciesPage/SearchVacancyPage";
 import { VacancyPage } from "./pages/VacancyPage/VacancyPage";
-import { Routes, Route } from "react-router-dom";
 import { Header } from "./modules/Header/Header";
 import { FavoritesVacanciesPage } from "./pages/FavoriteVacanciesPage/FavoriteVacanciesPage";
 import { useLazyAuthUserQuery } from "./api/mainApi";

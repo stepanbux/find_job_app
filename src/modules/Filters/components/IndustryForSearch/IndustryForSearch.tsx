@@ -1,7 +1,9 @@
 import React from "react";
-import s from "./IndustryForSearch.module.css";
+
 import { Title } from "../../UI/TitleForVacancySearch/TitleForVacancySearch";
 import { useGetCatalogQuery } from "../../../../api/mainApi";
+
+import s from "./IndustryForSearch.module.css";
 
 export const IndustryForSearch = () => {
   const { data, isLoading, error } = useGetCatalogQuery(undefined, {

@@ -1,7 +1,10 @@
 import React, { FC } from "react";
-import s from "./ModuleForEmptyPage.module.css";
-import image from "../../assets/imageForEmptyPage.svg";
+
 import { useNavigate } from "react-router-dom";
+
+import image from "../../assets/imageForEmptyPage.svg";
+
+import s from "./ModuleForEmptyPage.module.css";
 
 interface Props {
   isShowButton: boolean;

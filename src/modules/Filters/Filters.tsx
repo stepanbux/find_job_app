@@ -1,16 +1,20 @@
 import React, { FormEvent, useCallback } from "react";
-import s from "./Filters.module.css";
-import { MainTitleForSearch } from "./components/MainTitleForSearch/MainTitleForSearch";
-import { IndustryForSearch } from "./components/IndustryForSearch/IndustryForSearch";
-import { SalaryForSearch } from "./components/SalaryForSearch/SalaryForSearch";
+
 import { CommonButton } from "../../UI/CommonButton/CommonButton";
+
 import { useAppDispatch } from "../../store/redux-hooks";
+
 import {
   setPage,
   setPaymentFrom,
   setPaymentTo,
   setSelectedIndustry,
 } from "../../store/slice";
+
+import s from "./Filters.module.css";
+import { MainTitleForSearch } from "./components/MainTitleForSearch/MainTitleForSearch";
+import { IndustryForSearch } from "./components/IndustryForSearch/IndustryForSearch";
+import { SalaryForSearch } from "./components/SalaryForSearch/SalaryForSearch";
  
 export const Filters = () => {
   const dispatch = useAppDispatch();
